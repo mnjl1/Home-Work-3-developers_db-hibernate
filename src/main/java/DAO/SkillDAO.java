@@ -1,9 +1,9 @@
 package DAO;
+import Utils.AddInteger;
 
 import Entity.Developers;
 import connectToDatabase.SessionUnit;
 import org.hibernate.query.Query;
-import sun.plugin.com.Utils;
 
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +18,6 @@ public class SkillDAO {
     Scanner scanner = new Scanner(System.in);
 
     public void create(){
-        Utils utils = new Utils();
         Developers developers = new Developers();
         sessionUnit.openSession();
         sessionUnit.openTransaction();
@@ -31,7 +30,7 @@ public class SkillDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter developer' id.");
-        skill_id = scanner.nextInt();
+        skill_id = AddInteger.addInteger();
         Developers developer = sessionUnit.getSession().get(Developers.class, skill_id);
         System.out.println(developer);
         sessionUnit.closeTransaction();
@@ -41,7 +40,7 @@ public class SkillDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter developer' id to update.");
-        skill_id = scanner.nextInt();
+        skill_id = AddInteger.addInteger();
         scanner.nextLine();
         Developers developer = sessionUnit.getSession().get(Developers.class, skill_id);
         System.out.println("Enter first name.");
@@ -53,7 +52,7 @@ public class SkillDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter id to delete.");
-        skill_id = scanner.nextInt();
+        skill_id = AddInteger.addInteger();
         scanner.nextLine();
         Developers developer = sessionUnit.getSession().get(Developers.class, skill_id);
         sessionUnit.getSession().delete(developer);

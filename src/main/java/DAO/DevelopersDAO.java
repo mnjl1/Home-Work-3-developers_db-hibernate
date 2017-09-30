@@ -4,13 +4,10 @@ import Entity.Developers;
 import Entity.Skill;
 import connectToDatabase.SessionUnit;
 import org.hibernate.query.Query;
-import sun.plugin.com.Utils;
-
-import javax.rmi.CORBA.Util;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
+import Utils.AddInteger;
 
 public class DevelopersDAO {
     private int developer_id;
@@ -34,10 +31,10 @@ public class DevelopersDAO {
         lastName = scanner.nextLine();
         developer.setLastName(lastName);
         System.out.println("Enter company ID");
-        companyID = scanner.nextInt();
+        companyID = AddInteger.addInteger();
         developer.setItcompany_id(companyID);
         System.out.println("Enter salary.");
-        salary = scanner.nextInt();
+        salary = AddInteger.addInteger();
         developer.setSalary(salary);
         Skill skill = new Skill();
         System.out.println("Enter developer' skill");
@@ -53,7 +50,7 @@ public class DevelopersDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter developer' id.");
-        developer_id = scanner.nextInt();
+        developer_id = AddInteger.addInteger();
         Developers developer = sessionUnit.getSession().get(Developers.class, developer_id);
         System.out.println(developer);
         sessionUnit.closeTransaction();
@@ -63,7 +60,7 @@ public class DevelopersDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter developer' id to update.");
-        developer_id = scanner.nextInt();
+        developer_id = AddInteger.addInteger();
         scanner.nextLine();
         Developers developer = sessionUnit.getSession().get(Developers.class, developer_id);
         System.out.println("Enter first name.");
@@ -73,10 +70,10 @@ public class DevelopersDAO {
         lastName = scanner.nextLine();
         developer.setLastName(lastName);
         System.out.println("Enter company id.");
-        companyID = scanner.nextInt();
+        companyID = AddInteger.addInteger();
         developer.setItcompany_id(companyID);
         System.out.println("Enter salary");
-        salary = scanner.nextInt();
+        salary = AddInteger.addInteger();
         developer.setSalary(salary);
         sessionUnit.getSession().save(developer);
         sessionUnit.closeTransaction();
@@ -86,7 +83,7 @@ public class DevelopersDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter id to delete.");
-        developer_id = scanner.nextInt();
+        developer_id = AddInteger.addInteger();
         scanner.nextLine();
         Developers developer = sessionUnit.getSession().get(Developers.class, developer_id);
         sessionUnit.getSession().delete(developer);
