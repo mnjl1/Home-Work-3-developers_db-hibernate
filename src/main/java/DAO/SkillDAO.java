@@ -57,9 +57,9 @@ public class SkillDAO {
         sessionUnit.openTransaction();
         System.out.println("Enter id to delete.");
         skill_id = AddInteger.addInteger();
-        scanner.nextLine();
-        Developers developer = sessionUnit.getSession().get(Developers.class, skill_id);
-        sessionUnit.getSession().delete(developer);
+        Skill  skill= sessionUnit.getSession().get(Skill.class, skill_id);
+        sessionUnit.getSession().delete(skill);
+        System.out.println("Skill deleted");
         sessionUnit.closeTransaction();
     }
 
@@ -67,8 +67,8 @@ public class SkillDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         Query query = sessionUnit.getSession().createQuery("from Skill ");
-        List<Developers> developersList = query.getResultList();
-        Iterator iterator = developersList.iterator();
+        List<Skill> skillList = query.getResultList();
+        Iterator iterator = skillList.iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }

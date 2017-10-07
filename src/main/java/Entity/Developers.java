@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Developers")
-//@Access(AccessType.FIELD)
 public class Developers implements Serializable {
 
     @Id
@@ -31,6 +30,12 @@ public class Developers implements Serializable {
     @JoinTable(name = "developer_skill", joinColumns = {
             @JoinColumn(name = "developer_id")}, inverseJoinColumns = {@JoinColumn(name = "skill_id")})
     private Set<Skill> skills = new HashSet<Skill>(0);
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "developer_project", joinColumns = {
+            @JoinColumn(name = "developer_id")
+    }, inverseJoinColumns = {@JoinColumn(name = "project_id")})
+    private Set<Project> projects = new HashSet <Project>(0);
 
     public int getDeveloper_id() {
         return developer_id;
@@ -82,6 +87,14 @@ public class Developers implements Serializable {
 
     public void addSkill(Skill skill ){
         skills.add(skill);
+    }
+
+    public Set <Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set <Project> projects) {
+        this.projects = projects;
     }
 
     @Override

@@ -11,11 +11,12 @@
         <property name="hibernate.connection.password">фвьшт</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
-        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
 
         <mapping class="Entity.Developers"></mapping>
         <mapping class="Entity.Skill"></mapping>
+        <mapping class="Entity.Project"></mapping>
+
 
     </session-factory>
 </hibernate-configuration>

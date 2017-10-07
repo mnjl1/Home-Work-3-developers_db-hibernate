@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "skills")
-@Access(AccessType.FIELD)
+//@Access(AccessType.FIELD)
 public class Skill implements Serializable {
 
     @Id
@@ -47,5 +47,13 @@ public class Skill implements Serializable {
 
     public void setDevelopers(Set <Developers> developers) {
         this.developers = developers;
+    }
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "skill_id=" + skill_id +
+                ", skillName='" + skillName + '\'' +
+                '}';
     }
 }
