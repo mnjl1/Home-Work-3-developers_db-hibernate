@@ -23,30 +23,33 @@ public class SkillDAO {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter first name.");
-        skill = scanner.nextLine();
-        skill.setFirstName(skill);
+        String newSkill = scanner.nextLine();
+        skill.setSkillName(newSkill);
+        sessionUnit.getSession().save(skill);
+        sessionUnit.closeTransaction();
     }
 
     public void getById(){
         sessionUnit.openSession();
         sessionUnit.openTransaction();
-        System.out.println("Enter developer' id.");
+        System.out.println("Enter skill id.");
         skill_id = AddInteger.addInteger();
-        Developers developer = sessionUnit.getSession().get(Developers.class, skill_id);
-        System.out.println(developer);
+        Skill skill = sessionUnit.getSession().get(Skill.class, skill_id);
+        System.out.println(skill);
         sessionUnit.closeTransaction();
     }
 
     public void update(){
         sessionUnit.openSession();
         sessionUnit.openTransaction();
-        System.out.println("Enter developer' id to update.");
+        System.out.println("Enter skill id to update.");
         skill_id = AddInteger.addInteger();
-        scanner.nextLine();
-        Developers developer = sessionUnit.getSession().get(Developers.class, skill_id);
-        System.out.println("Enter first name.");
-        skill = scanner.nextLine();
-        developer.setFirstName(skill);
+        Skill skill = sessionUnit.getSession().get(Skill.class, skill_id);
+        System.out.println("Enter skill name.");
+        String newSkill = scanner.nextLine();
+        skill.setSkillName(newSkill);
+        sessionUnit.getSession().save(skill);
+        sessionUnit.closeTransaction();
     }
 
     public void delete(){
