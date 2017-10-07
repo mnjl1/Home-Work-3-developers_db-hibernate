@@ -20,7 +20,7 @@ public class DevelopersDAO {
 
     Scanner scanner = new Scanner(System.in);
 
-    public void create(){
+    public void createDeveloper(){
         Developers developer = new Developers();
         sessionUnit.openSession();
         sessionUnit.openTransaction();
@@ -36,9 +36,17 @@ public class DevelopersDAO {
         System.out.println("Enter salary.");
         salary = AddInteger.addInteger();
         developer.setSalary(salary);
+    }
+
+    public void addSkill(){
+        sessionUnit.openSession();
+        sessionUnit.openTransaction();
+        System.out.println("Adding skill to developer.");
+        System.out.println("Enter developer' id.");
+        int developerId = scanner.nextInt();
         Skill skill = new Skill();
-        System.out.println("Enter developer' skill");
-        scanner.nextLine();
+        Developers developer = sessionUnit.getSession().get(Developers.class, developerId);
+        System.out.println("Enter developer's skill.");
         String devSkill = scanner.nextLine();
         skill.setSkillName(devSkill);
         developer.addSkill(skill);

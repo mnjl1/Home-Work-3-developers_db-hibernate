@@ -19,29 +19,34 @@ public class MenuHolder {
             case (1) : {
                 DevelopersDAO developersDAO = new DevelopersDAO();
                 System.out.println("1. Create developer.");
-                System.out.println("2. Get developer by id.");
-                System.out.println("3. Update developer.");
-                System.out.println("4. Delete developer.");
-                System.out.println("5. Get all developers.");
+                System.out.println("2. Add skill to developer.");
+                System.out.println("3. Get developer by id.");
+                System.out.println("4. Update developer.");
+                System.out.println("5. Delete developer.");
+                System.out.println("6. Get all developers.");
                 choice = scanner.nextInt();
                 switch (choice) {
                     case (1) : {
-                        developersDAO.create();
+                        developersDAO.createDeveloper();
                         break;
                     }
                     case (2) : {
-                        developersDAO.getById();
+                        developersDAO.addSkill();
                         break;
                     }
                     case (3) : {
-                        developersDAO.update();
+                        developersDAO.getById();
                         break;
                     }
                     case (4) : {
-                        developersDAO.delete();
+                        developersDAO.update();
                         break;
                     }
                     case (5) : {
+                        developersDAO.delete();
+                        break;
+                    }
+                    case (6) : {
                         developersDAO.getAll();
                         break;
                     }
