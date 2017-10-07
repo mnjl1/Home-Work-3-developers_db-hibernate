@@ -1,4 +1,5 @@
 package DAO;
+import Entity.Skill;
 import Utils.AddInteger;
 
 import Entity.Developers;
@@ -18,12 +19,12 @@ public class SkillDAO {
     Scanner scanner = new Scanner(System.in);
 
     public void create(){
-        Developers developers = new Developers();
+        Skill skill = new Skill();
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter first name.");
         skill = scanner.nextLine();
-        developers.setFirstName(skill);
+        skill.setFirstName(skill);
     }
 
     public void getById(){

@@ -36,6 +36,8 @@ public class DevelopersDAO {
         System.out.println("Enter salary.");
         salary = AddInteger.addInteger();
         developer.setSalary(salary);
+        sessionUnit.getSession().save(developer);
+        sessionUnit.closeTransaction();
     }
 
     public void addSkill(){
@@ -43,9 +45,9 @@ public class DevelopersDAO {
         sessionUnit.openTransaction();
         System.out.println("Adding skill to developer.");
         System.out.println("Enter developer' id.");
-        int developerId = scanner.nextInt();
-        Skill skill = new Skill();
+        int developerId = AddInteger.addInteger();
         Developers developer = sessionUnit.getSession().get(Developers.class, developerId);
+        Skill skill = new Skill();
         System.out.println("Enter developer's skill.");
         String devSkill = scanner.nextLine();
         skill.setSkillName(devSkill);

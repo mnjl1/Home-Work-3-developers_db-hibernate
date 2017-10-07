@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Developers")
-@Access(AccessType.FIELD)
+//@Access(AccessType.FIELD)
 public class Developers implements Serializable {
 
     @Id
