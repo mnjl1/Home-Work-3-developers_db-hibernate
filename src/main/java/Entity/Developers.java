@@ -88,12 +88,15 @@ public class Developers implements Serializable {
     public void addSkill(Skill skill ){
         skills.add(skill);
     }
+    public void addProject(Project project){
+        projects.add(project);
+    }
 
-    public Set <Project> getProjects() {
+    public Set <Project> getProject() {
         return projects;
     }
 
-    public void setProjects(Set <Project> projects) {
+    public void setProject(Set <Project> projects) {
         this.projects = projects;
     }
 

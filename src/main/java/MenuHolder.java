@@ -1,7 +1,10 @@
 import DAO.DevelopersDAO;
+import DAO.ProjectDAO;
 import DAO.SkillDAO;
 
 import java.util.Scanner;
+
+import Entity.Project;
 import Utils.AddInteger;
 
 public class MenuHolder {
@@ -9,10 +12,10 @@ public class MenuHolder {
 
         System.out.println("Make your choice.");
         System.out.println("1.Developers.");
-        System.out.println("2.Skill");
-        System.out.println("3.It Company");
-        System.out.println("4. Customer");
-        System.out.println("5. Projects");
+        System.out.println("2.Skills");
+        System.out.println("3.Projects");
+        System.out.println("4. Customers");
+        System.out.println("5. It Company");
         System.out.println("6. Exit app.");
 
         Scanner scanner = new Scanner(System.in);
@@ -84,6 +87,44 @@ public class MenuHolder {
                         break;
                     }
 
+                }
+            }
+
+            case (3) : {
+                ProjectDAO project = new ProjectDAO();
+                System.out.println("1. Create project.");
+                System.out.println("2. Appoint project to developer.");
+                System.out.println("3. Get project by id.");
+                System.out.println("4. Update project.");
+                System.out.println("5. Delete project.");
+                System.out.println("6. Get all projects.");
+                choice = AddInteger.addInteger();
+
+                switch (choice) {
+                    case(1) : {
+                        project.create();
+                        break;
+                    }
+                    case (2) : {
+                        project.appointProject();
+                        break;
+                    }
+                    case (3) : {
+                        project.getById();
+                        break;
+                    }
+                    case (4) : {
+                        project.update();
+                        break;
+                    }
+                    case (5) : {
+                        project.deleteProject();
+                        break;
+                    }
+                    case (6) : {
+                        project.getAll();
+                        break;
+                    }
                 }
             }
         }

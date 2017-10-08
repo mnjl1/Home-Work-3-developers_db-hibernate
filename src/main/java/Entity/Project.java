@@ -43,4 +43,12 @@ public class Project {
     public void setDevelopers(Set <Developers> developers) {
         this.developers = developers;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "project_id=" + project_id +
+                ", projectName='" + projectName + '\'' +
+                '}';
+    }
 }
