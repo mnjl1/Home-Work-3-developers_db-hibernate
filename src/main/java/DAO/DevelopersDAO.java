@@ -1,6 +1,7 @@
 package DAO;
 
 import Entity.Developers;
+import Entity.ItCompany;
 import Entity.Skill;
 import connectToDatabase.SessionUnit;
 import org.hibernate.query.Query;
@@ -12,7 +13,6 @@ import Utils.AddInteger;
 public class DevelopersDAO {
     private int developer_id;
     private String firstName;
-    private int companyID;
     private String lastName;
     private int salary;
 
@@ -30,9 +30,6 @@ public class DevelopersDAO {
         System.out.println("Enter last name.");
         lastName = scanner.nextLine();
         developer.setLastName(lastName);
-        System.out.println("Enter company ID");
-        companyID = AddInteger.addInteger();
-        developer.setItcompany_id(companyID);
         System.out.println("Enter salary.");
         salary = AddInteger.addInteger();
         developer.setSalary(salary);
@@ -79,9 +76,10 @@ public class DevelopersDAO {
         System.out.println("Enter last name");
         lastName = scanner.nextLine();
         developer.setLastName(lastName);
-        System.out.println("Enter company id.");
-        companyID = AddInteger.addInteger();
-        developer.setItcompany_id(companyID);
+        int itCompanyId = AddInteger.addInteger();
+        System.out.println("Enter It company id.");
+        ItCompany itCompany = sessionUnit.getSession().get(ItCompany.class, itCompanyId);
+        developer.addItCompany(itCompany);
         System.out.println("Enter salary");
         salary = AddInteger.addInteger();
         developer.setSalary(salary);

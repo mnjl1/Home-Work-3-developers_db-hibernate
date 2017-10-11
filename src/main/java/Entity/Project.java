@@ -20,6 +20,14 @@ public class Project {
     )
     Set<Developers> developers = new HashSet <Developers>(0);
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "companyID")
+    private ItCompany itCompany;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
     public int getProject_id() {
         return project_id;
     }
@@ -42,6 +50,22 @@ public class Project {
 
     public void setDevelopers(Set <Developers> developers) {
         this.developers = developers;
+    }
+
+    public ItCompany getItCompany() {
+        return itCompany;
+    }
+
+    public void setItCompany(ItCompany itCompany) {
+        this.itCompany = itCompany;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override

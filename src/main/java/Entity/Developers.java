@@ -20,9 +20,6 @@ public class Developers implements Serializable {
     @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "companyID")
-    private int itcompany_id;
-
     @Column(name = "salary")
     private int salary;
 
@@ -36,6 +33,9 @@ public class Developers implements Serializable {
             @JoinColumn(name = "developer_id")
     }, inverseJoinColumns = {@JoinColumn(name = "project_id")})
     private Set<Project> projects = new HashSet <Project>(0);
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private Set<ItCompany> itCompanies = new HashSet <ItCompany>(0);
 
     public int getDeveloper_id() {
         return developer_id;
@@ -61,14 +61,6 @@ public class Developers implements Serializable {
         this.lastName = lastName;
     }
 
-    public int getItcompany_id() {
-        return itcompany_id;
-    }
-
-    public void setItcompany_id(int itcompany_id) {
-        this.itcompany_id = itcompany_id;
-    }
-
     public int getSalary() {
         return salary;
     }
@@ -92,6 +84,10 @@ public class Developers implements Serializable {
         projects.add(project);
     }
 
+    public void addItCompany(ItCompany itCompany){
+        itCompanies.add(itCompany);
+    }
+
     public Set <Project> getProject() {
         return projects;
     }
@@ -100,13 +96,20 @@ public class Developers implements Serializable {
         this.projects = projects;
     }
 
+    public Set <ItCompany> getItCompanies() {
+        return itCompanies;
+    }
+
+    public void setItCompanies(Set <ItCompany> itCompanies) {
+        this.itCompanies = itCompanies;
+    }
+
     @Override
     public String toString() {
         return "Developers{" +
                 "developer_id=" + developer_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", itcompany_id=" + itcompany_id +
                 ", salary=" + salary +
                 '}';
     }

@@ -16,6 +16,8 @@
         <mapping class="Entity.Developers"></mapping>
         <mapping class="Entity.Skill"></mapping>
         <mapping class="Entity.Project"></mapping>
+        <mapping class="Entity.ItCompany"></mapping>
+        <mapping class="Entity.Customer"></mapping>
 
 
     </session-factory>
