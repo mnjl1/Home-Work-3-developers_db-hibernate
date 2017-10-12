@@ -1,10 +1,6 @@
-import DAO.DevelopersDAO;
-import DAO.ProjectDAO;
-import DAO.SkillDAO;
+import DAO.*;
 
 import java.util.Scanner;
-
-import Entity.Project;
 import Utils.AddInteger;
 
 public class MenuHolder {
@@ -127,6 +123,80 @@ public class MenuHolder {
                     }
                 }
             }
+            case(4) : {
+                CustomerDAO customerDAO = new CustomerDAO();
+                System.out.println("1. Create customer.");
+                System.out.println("2. Order project.");
+                System.out.println("3. Get customer by id.");
+                System.out.println("4. Update customer.");
+                System.out.println("5. Delete customer.");
+                System.out.println("6. Get all customers.");
+                choice = AddInteger.addInteger();
+
+                switch (choice) {
+                    case (1) : {
+                        customerDAO.create();
+                        break;
+                    }
+                    case (2) : {
+                        customerDAO.orderProject();
+                        break;
+                    }
+                    case (3) : {
+                        customerDAO.getById();
+                        break;
+                    }
+                    case (4) : {
+                        customerDAO.update();
+                        break;
+                    }
+                    case (5) : {
+                        customerDAO.delete();
+                        break;
+                    }
+                    case (6) : {
+                        customerDAO.getAll();
+                        break;
+                    }
+                }
+            }
+            case (5) : {
+                ItCompanyDAO itCompanyDAO = new ItCompanyDAO();
+                System.out.println("1. Create company.");
+                System.out.println("2. Get company by id.");
+                System.out.println("3. Update company.");
+                System.out.println("4. Delete company.");
+                System.out.println("5. Get all companies.");
+                choice = AddInteger.addInteger();
+
+                switch (choice) {
+                    case (1) : {
+                        itCompanyDAO.create();
+                        break;
+                    }
+                    case (2) : {
+                        itCompanyDAO.getByiD();
+                        break;
+                    }
+                    case (3) : {
+                        itCompanyDAO.update();
+                        break;
+                    }
+                    case(4) : {
+                        itCompanyDAO.delete();
+                        break;
+                    }
+                    case (5) : {
+                        itCompanyDAO.getAll();
+                        break;
+                    }
+                }
+            }
+
+            case (6) : {
+                System.exit(0);
+            }
         }
+
     }
 }

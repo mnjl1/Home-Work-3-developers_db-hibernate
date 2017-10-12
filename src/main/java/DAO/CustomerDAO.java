@@ -1,9 +1,14 @@
 package DAO;
 
 import Entity.Customer;
+import Entity.Developers;
 import Entity.Project;
 import connectToDatabase.SessionUnit;
 import Utils.AddInteger;
+import org.hibernate.query.Query;
+
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerDAO {
@@ -57,7 +62,7 @@ public class CustomerDAO {
         customer.setCustomerName(customerName);
     }
 
-    public void delete(){
+    public void delete() {
         sessionUnit.openSession();
         sessionUnit.openTransaction();
         System.out.println("Enter customer id to delete");
@@ -66,6 +71,17 @@ public class CustomerDAO {
         sessionUnit.getSession().delete(customer);
         sessionUnit.closeTransaction();
         System.out.println("Customer deleted.");
-        
+    }
+
+    public void getAll(){
+        sessionUnit.openSession();
+        sessionUnit.openTransaction();
+        Query query = sessionUnit.getSession().createQuery("from Customer ");
+        List<Customer> customerList = query.getResultList();
+        Iterator iterator = customerList.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        sessionUnit.closeTransaction();
     }
 }
